@@ -12,13 +12,13 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #2e2e2e;
-      color: #fff;
+      background-color: #1a2733; /* cooler dark blue */
+      color: #e0e7f1; /* light grayish white */
       line-height: 1.6;
     }
     header {
-      background-color: #2e2e2e;
-      color: #fff;
+      background-color: #1a2733;
+      color: #e0e7f1;
       padding: 2rem;
       text-align: center;
     }
@@ -34,7 +34,7 @@
     header p {
       font-size: 1.15rem;
       margin-top: 0.5rem;
-      color: #ccc;
+      color: #a3b4c7;
     }
     section {
       padding: 2rem 1rem;
@@ -44,27 +44,35 @@
     h2 {
       font-size: 1.8rem;
       margin-bottom: 1rem;
-      color: #ffd700;
+      color: #00e5ff; /* electric cyan */
     }
     .services, .contact {
       display: grid;
       gap: 1.5rem;
     }
     .services div {
-      background: #fff;
+      background: #f5faff; /* very pale blue */
       color: #222;
       padding: 1.5rem;
-      border-left: 6px solid #ff4d00;
+      border-left: 6px solid #00e5ff; /* electric cyan */
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     .services h3 {
       margin-top: 0;
-      color: #ff4d00;
+      color: #00d1b2; /* bright teal */
+      cursor: pointer;
+      user-select: none;
+    }
+    .expanded-info {
+      display: none;
+      color: #555;
+      margin-top: 0.75rem;
+      font-size: 0.95rem;
     }
     .cta {
-      background-color: #ff4d00;
-      color: #fff;
+      background-color: #00e5ff; /* electric cyan */
+      color: #0a1e26; /* very dark blue for contrast */
       text-align: center;
       padding: 3rem 1rem;
       border-radius: 10px;
@@ -81,11 +89,11 @@
       display: block;
       font-size: 1.2rem;
       margin-top: 1rem;
-      color: #ffd700;
+      color: #00bcd4; /* slightly darker cyan */
     }
     .cta a {
-      background-color: #ffd700;
-      color: #000;
+      background-color: #00bcd4; /* bright teal */
+      color: #fff;
       padding: 0.9rem 1.8rem;
       text-decoration: none;
       font-weight: bold;
@@ -97,17 +105,25 @@
       transition: background-color 0.3s ease;
     }
     .cta a:hover {
-      background-color: #ffcc00;
+      background-color: #00acc1; /* slightly darker teal */
     }
     .contact p {
       margin: 0.5rem 0;
       font-size: 1.05rem;
+      color: #a3b4c7;
     }
     footer {
       text-align: center;
       padding: 1rem;
       font-size: 0.9rem;
-      color: #bbb;
+      color: #9bb7cc; /* muted light blue-gray */
+    }
+    a {
+      color: #00e5ff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -120,17 +136,29 @@
 
   <section class="services">
     <h2>Moving Made Personal</h2>
+
     <div>
-      <h3>Residential Moves</h3>
+      <h3 onclick="toggleInfo('residential-info')">Residential Moves</h3>
       <p>Moving to a new home? We make it simple. Our team treats every home like it’s our own — with care, respect, and hustle.</p>
+      <p id="residential-info" class="expanded-info">
+        Whether you're upgrading, downsizing, or relocating, we ensure your belongings arrive safely and on time. Our experienced movers handle everything from packing fragile items to loading heavy furniture.
+      </p>
     </div>
+
     <div>
-      <h3>Furniture Delivery</h3>
+      <h3 onclick="toggleInfo('furniture-info')">Furniture Delivery</h3>
       <p>Whether it’s a new couch or a vintage piece, we’ll handle it like it's priceless. Let us do the heavy lifting and safe delivery.</p>
+      <p id="furniture-info" class="expanded-info">
+        From single item delivery to full furniture setups, we specialize in careful handling and precise placement. We treat your furniture like it’s our own — ensuring no scratches, dents, or damage.
+      </p>
     </div>
+
     <div>
-      <h3>Last-Minute Moves</h3>
+      <h3 onclick="toggleInfo('lastminute-info')">Last-Minute Moves</h3>
       <p>We understand life happens fast. That’s why we’re ready when you need us — even if it’s same day.</p>
+      <p id="lastminute-info" class="expanded-info">
+        Facing an unexpected move? Our team is flexible and ready to jump in at a moment’s notice. We prioritize your schedule and provide swift, efficient service without sacrificing quality.
+      </p>
     </div>
   </section>
 
@@ -145,11 +173,22 @@
     <h2>Let’s Stay Connected</h2>
     <p><strong>Email:</strong> info@moversintown.com</p>
     <p><strong>Serving:</strong> DFW Metroplex and surrounding areas</p>
-    <p><strong>Instagram:</strong> <a href="https://instagram.com/moversintown" target="_blank" rel="noopener" style="color:#ffd700;">@moversintown</a></p>
+    <p><strong>Instagram:</strong> <a href="https://instagram.com/moversintown" target="_blank" rel="noopener">@moversintown</a></p>
   </section>
 
   <footer>
     &copy; 2025 Movers In Town LLC. All rights reserved.
   </footer>
+
+  <script>
+    function toggleInfo(id) {
+      const el = document.getElementById(id);
+      if (el.style.display === 'block') {
+        el.style.display = 'none';
+      } else {
+        el.style.display = 'block';
+      }
+    }
+  </script>
 </body>
 </html>
